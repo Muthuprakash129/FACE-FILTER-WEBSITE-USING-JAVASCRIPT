@@ -1,0 +1,203 @@
+# AR Project Documentation
+*Version 1.0*
+
+## Table of Contents
+1. [Introduction](#introduction)
+2. [System Requirements](#system-requirements)
+3. [Installation Guide](#installation-guide)
+4. [User Guide](#user-guide)
+5. [Technical Documentation](#technical-documentation)
+6. [Troubleshooting](#troubleshooting)
+7. [Appendix](#appendix)
+
+## Introduction
+
+### Project Overview
+The AR Project is a web-based augmented reality application that provides real-time face tracking and interactive filters. The application uses MediaPipe's Face Mesh technology to detect facial landmarks and apply various visual effects, including a cat filter, jewel necklace, and interactive sound effects.
+
+### Key Features
+- Real-time face tracking and filter application
+- Interactive cat filter with animated elements
+- Background music with toggle control
+- Meow sound effect triggered by mouth movement
+- Photo capture functionality
+- Camera controls (front/back toggle)
+
+## System Requirements
+
+### Hardware Requirements
+- Webcam or mobile device camera
+- Microphone (for sound effects)
+- Speakers or headphones
+- Minimum 4GB RAM
+- Stable internet connection
+
+### Software Requirements
+- Modern web browser (Chrome recommended)
+- JavaScript enabled
+- Camera permissions
+- Audio permissions
+
+### Supported Browsers
+- Google Chrome (version 80+)
+- Mozilla Firefox (version 75+)
+- Safari (version 13+)
+- Microsoft Edge (version 80+)
+
+## Installation Guide
+
+### Step 1: Clone the Repository
+```bash
+git clone [repository-url]
+cd AR_project
+```
+
+### Step 2: Set Up Local Server
+1. Install a local server (e.g., Live Server in VS Code)
+2. Open the project folder in your code editor
+3. Start the local server
+
+### Step 3: Access the Application
+1. Open your web browser
+2. Navigate to `http://localhost:[port]`
+3. Allow camera and microphone permissions when prompted
+
+## User Guide
+
+### Starting the AR Experience
+1. Click the "Start AR Experience" button
+2. Grant necessary permissions
+3. Position yourself 2-3 feet from the camera
+4. Ensure good lighting conditions
+
+### Controls and Features
+
+#### Main Controls
+- **Start AR Experience**: Initiates the AR session
+- **Exit AR**: Ends the current session
+- **Music Toggle (🔊)**: Controls background music
+- **Camera Toggle (🔄)**: Switches between front and back cameras
+- **Photo Capture (📸)**: Takes a screenshot
+
+#### Interactive Features
+- **Cat Filter**:
+  - Animated ears that wiggle
+  - Tracking eyes that follow movement
+  - Whiskers that move
+  - Nose that follows facial expressions
+- **Sound Effects**:
+  - Background music with toggle
+  - Meow sound on mouth opening
+- **Jewel Necklace**:
+  - Animated jewels
+  - Sparkle effects
+
+## Technical Documentation
+
+### Project Structure
+```
+AR_project/
+├── index.html          # Main HTML file
+├── styles.css          # CSS styles
+├── ar.js              # Main JavaScript file
+└── README.md          # Documentation
+```
+
+### Core Components
+
+#### Face Tracking Implementation
+```javascript
+faceMesh.setOptions({
+    maxNumFaces: 1,
+    refineLandmarks: true,
+    minDetectionConfidence: 0.5,
+    minTrackingConfidence: 0.5
+});
+```
+
+#### Sound Implementation
+```javascript
+// Background music
+const bgMusic = document.getElementById('bgMusic');
+bgMusic.loop = true;
+
+// Meow sound
+const catSound = document.getElementById('catSound');
+```
+
+### Key Functions
+
+#### Face Detection
+- `startAR()`: Initializes camera and AR experience
+- `detectFace()`: Sets up face tracking
+- `onResults()`: Processes face tracking results
+
+#### Filter Implementation
+- `drawSnapchatFilter()`: Renders cat filter
+- `drawJewelNecklace()`: Renders necklace effect
+- `checkMouthOpening()`: Detects mouth movement
+
+#### Control Functions
+- `toggleMusic()`: Controls background music
+- `toggleCamera()`: Switches camera view
+- `takePhoto()`: Captures current view
+
+## Troubleshooting
+
+### Common Issues and Solutions
+
+#### Camera Issues
+1. **Camera Not Working**
+   - Check browser permissions
+   - Ensure no other applications are using the camera
+   - Try refreshing the page
+
+2. **Poor Face Tracking**
+   - Improve lighting conditions
+   - Adjust distance from camera
+   - Ensure face is clearly visible
+
+#### Sound Issues
+1. **No Sound Effects**
+   - Check browser sound permissions
+   - Ensure device is not muted
+   - Try using a different browser
+
+2. **Background Music Not Playing**
+   - Check if music is enabled
+   - Verify audio permissions
+   - Try refreshing the page
+
+### Performance Optimization
+- Close unnecessary browser tabs
+- Ensure good lighting conditions
+- Maintain stable internet connection
+- Keep browser updated to latest version
+
+## Appendix
+
+### MediaPipe Face Mesh Landmarks
+The application uses 468 facial landmarks for precise tracking:
+- Eyes: 33, 263, 133, 362
+- Nose: 1
+- Mouth: 61, 291
+- Chin: 152
+- Temples: 234, 454
+- Forehead: 10
+
+### Color Codes
+- Cat Ears: #F5F5DC
+- Inner Ears: #FFB6C1 to #FF69B4
+- Eyes: #FFD700
+- Whiskers: #FFFFFF
+
+### Animation Parameters
+- Ear Wiggle: Math.sin(animationFrame * 0.1) * 3
+- Whisker Wave: Math.sin(animationFrame * 0.1) * 5
+- Sound Cooldown: 500ms
+- Mouth Open Threshold: 0.15
+
+---
+
+*Documentation last updated: [Current Date]*
+*For support or questions, please contact: [Your Contact Information]* 
